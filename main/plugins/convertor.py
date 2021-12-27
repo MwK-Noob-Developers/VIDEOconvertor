@@ -15,7 +15,7 @@ from telethon.tl.types import DocumentAttributeVideo
 
 async def mp3(event, msg):
     Drone = event.client
-    edit = await Drone.send_message(event.chat_id, "Trying to process!", reply_to=msg.id)
+    edit = await Drone.send_message(event.chat_id, "Processing!", reply_to=msg.id)
     if hasattr(msg.media, "document"):
         file = msg.media.document
     else:
@@ -45,7 +45,7 @@ async def mp3(event, msg):
         return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
     try:
         await edit.edit("Converting.")
-        bash(f"ffmpeg -i {name} -codec:a libmp3lame -q:a 0 {out}.mp3")
+        bash(f"ffmpeg -i {name} -metadata title="SMLx265/MwkOTT" -codec:a libmp3lame -q:a 0 {out}.mp3")
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
@@ -64,7 +64,7 @@ async def mp3(event, msg):
                        
 async def flac(event, msg):
     Drone = event.client
-    edit = await Drone.send_message(event.chat_id, "Trying to process!", reply_to=msg.id)
+    edit = await Drone.send_message(event.chat_id, "Processing!", reply_to=msg.id)
     if hasattr(msg.media, "document"):
         file = msg.media.document
     else:
@@ -94,7 +94,7 @@ async def flac(event, msg):
         return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
     try:
         await edit.edit("Converting.")
-        bash(f"ffmpeg -i {name} -codec:a libmp3lame -q:a 0 {out}.mp3")
+        bash(f"ffmpeg -i {name} -metadata title="SMLx265/MwkOTT" -codec:a libmp3lame -q:a 0 {out}.mp3")
         bash(f'ffmpeg -i {out}.mp3 -c:a flac {out}.flac')
     except Exception as e:
         os.rmdir("audioconvert")
@@ -145,7 +145,7 @@ async def wav(event, msg):
         return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
     try:
         await edit.edit("Converting.")
-        bash(f"ffmpeg -i {name} -codec:a libmp3lame -q:a 0 {out}.mp3")
+        bash(f"ffmpeg -i {name} -metadata title="SMLx265/MwkOTT" -codec:a libmp3lame -q:a 0 {out}.mp3")
         bash(f'ffmpeg -i {out}.mp3 {out}.wav')
     except Exception as e:
         os.rmdir("audioconvert")
@@ -166,7 +166,7 @@ async def wav(event, msg):
                                        
 async def mp4(event, msg):
     Drone = event.client
-    edit = await Drone.send_message(event.chat_id, "Trying to process!", reply_to=msg.id)
+    edit = await Drone.send_message(event.chat_id, "Processing!", reply_to=msg.id)
     if hasattr(msg.media, "document"):
         file = msg.media.document
     else:
