@@ -7,3 +7,5 @@ pymongo
 motor
 pymongo[srv]
 dnspython
+wikipedia>=1.4.0
+pyrogram>=1.2.6
