@@ -55,7 +55,7 @@ async def compress(event, msg):
         return await edit.edit(f"An error occured while downloading.\n\nContact [SUPPORT]({SUPPORT_LINK})", link_preview=False) 
     FT = time.time()
     progress = f"progress-{FT}.txt"
-    cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -vcodec libx265 -crf 28 -acodec copy """{out}""" -y'
+    cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -metadata title="SMLx265/MwkOTT" -vcodec libx265 -pix_fmt yuv420p -crf 25 -acodec copy -metadata title="SMLx265/MwkOTT" """{out}""" -y'
     try:
         await ffmpeg_progress(cmd, name, progress, FT, edit, '**COMPRESSING:**')
     except Exception as e:
@@ -63,7 +63,7 @@ async def compress(event, msg):
         await LOG_END(event, log_end_text)
         os.rmdir("compressmedia")
         print(e)
-        return await edit.edit(f"An error occured while FFMPEG progress.\n\nContact [SUPPORT]({SUPPORT_LINK})", link_preview=False)   
+        return await edit.edit(f"An error occured while FFMPEG progress.\n\nReport @RedbullFed", link_preview=False)   
     i_size = os.path.getsize(name)
     f_size = os.path.getsize(out)
     text = f'**COMPRESSED by** : @{BOT_UN}\n\nbefore compressing : `{i_size}`\nafter compressing : `{f_size}`'
@@ -100,7 +100,7 @@ async def file_compress(event, name, List1):
     out = "out_" + dt.now().isoformat("_", "seconds") + (name.split("."))[1]
     FT = time.time()
     progress = f"progress-{FT}.txt"
-    cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -vcodec libx265 -crf 28 -acodec copy """{out}""" -y'
+    cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -metadata title="SMLx265/MwkOTT" -vcodec libx265 -crf 25 -pix_fmt yuv420p -acodec copy -metadata title="SMLx265/MwkOTT" """{out}""" -y'
     try:
         await ffmpeg_progress(cmd, name, progress, FT, edit, '**COMPRESSING:**')
     except Exception as e:
