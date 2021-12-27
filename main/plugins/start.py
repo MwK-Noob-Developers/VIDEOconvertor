@@ -10,7 +10,7 @@ from ethon.teleutils import mention
 async def start(event):
     await event.reply(f'{st}', file=file,
                       buttons=[
-                              [Button.inline("Menu.", data="menu")]
+                              [Button.inline("CONFIGURE", data="menu")]
                               ])
     tag = f'[{event.sender.first_name}](tg://user?id={event.sender_id})'
     await Drone.send_message(int(ACCESS_CHANNEL), f'{tag} started the BOT')
@@ -19,19 +19,20 @@ async def start(event):
 async def menu(event):
     await event.edit("**📑MENU.**",
                     buttons=[[
-                         Button.inline("info.", data="info"),
-                         Button.inline("NOTICE", data="notice")],
+                         Button.inline("HELP", data="help"),
+                         Button.inline("INFO", data="info")],
                          [
-                         Button.inline("SOURCE", data="source"),
-                         Button.inline("Help.", data="help")],
+                         Button.inline("NOTE", data="notice"),
+                         Button.url("DEV", url="t.me/shamilnelli")],
                          [
-                         Button.url("DEVELOPER", url=f"{DEV}")]])
+                         Button.url("UPDATES", url="t.me/mwkbots"),
+                         Button.url("SUPPORT", url="t.me/redbullfed")]])
     
 @Drone.on(events.callbackquery.CallbackQuery(data="info"))
 async def info(event):
-    await event.edit(f'**ℹ️NFO:**\n\n{info_text}',
+    await event.edit(f'**ℹ️ NFO:**\n\n{info_text}',
                     buttons=[[
-                         Button.inline("Menu.", data="menu")]])
+                         Button.inline("HOME", data="menu")]])
     
 @Drone.on(events.callbackquery.CallbackQuery(data="notice"))
 async def notice(event):
@@ -46,18 +47,18 @@ async def source(event):
     
 @Drone.on(events.callbackquery.CallbackQuery(data="help"))
 async def help(event):
-    await event.edit('**👥HELP.**',
+    await event.edit('**🆘 HELP.**',
                     buttons=[[
-                         Button.inline("PLUGINS.", data="plugins"),
-                         Button.url("SUPPORT.", url=f"{SUPPORT_LINK}")],
+                         Button.inline("FEATURES", data="plugins"),
+                         Button.url("🐞 BUG", url="t.me/redbullfed")],
                          [
-                         Button.inline("Menu.", data="menu")]])
+                         Button.inline("HOME", data="menu")]])
     
 @Drone.on(events.callbackquery.CallbackQuery(data="plugins"))
 async def plugins(event):
     await event.edit(f'{help_text}',
                     buttons=[[
-                         Button.inline("Menu.", data="menu")]])
+                         Button.inline("HOME", data="menu")]])
     
     
     
