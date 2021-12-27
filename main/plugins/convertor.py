@@ -45,7 +45,7 @@ async def mp3(event, msg):
         return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
     try:
         await edit.edit("Converting.")
-        bash(f"ffmpeg -i {name} -metadata title="SMLx265/MwkOTT" -codec:a libmp3lame -q:a 0 {out}.mp3")
+        bash(f"ffmpeg -i {name} -metadata title='SMLx265/MwkOTT' -codec:a libmp3lame -q:a 0 {out}.mp3")
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
@@ -94,7 +94,7 @@ async def flac(event, msg):
         return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
     try:
         await edit.edit("Converting.")
-        bash(f"ffmpeg -i {name} -metadata title="SMLx265/MwkOTT" -codec:a libmp3lame -q:a 0 {out}.mp3")
+        bash(f"ffmpeg -i {name} -metadata title='SMLx265/MwkOTT' -codec:a libmp3lame -q:a 0 {out}.mp3")
         bash(f'ffmpeg -i {out}.mp3 -c:a flac {out}.flac')
     except Exception as e:
         os.rmdir("audioconvert")
@@ -145,7 +145,7 @@ async def wav(event, msg):
         return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
     try:
         await edit.edit("Converting.")
-        bash(f"ffmpeg -i {name} -metadata title="SMLx265/MwkOTT" -codec:a libmp3lame -q:a 0 {out}.mp3")
+        bash(f"ffmpeg -i {name} -metadata title='SMLx265/MwkOTT' -codec:a libmp3lame -q:a 0 {out}.mp3")
         bash(f'ffmpeg -i {out}.mp3 {out}.wav')
     except Exception as e:
         os.rmdir("audioconvert")
